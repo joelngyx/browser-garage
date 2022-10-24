@@ -1,19 +1,22 @@
-import React, { useState, useSyncExternalStore } from "react";
+import React, { useState } from "react";
 
 
 const SoundButton = (props) => {
-  // props are: name, currentTrack, setTrack
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const toggleButton = () => {
-    (isPlaying === true) ? setIsPlaying(false) : setIsPlaying(true);
-    if (isPlaying === true) {
-      props.setTrack(props.name);
-    } else if (isPlaying === false) {
+
+  const toggleIsPlaying = () => {
+    isPlaying === false ? setIsPlaying(true) : setIsPlaying(false);
+    
+    if(isPlaying === false) {
       props.setTrack('');
+    } else if (isPlaying === true) {
+      props.setTrack(props.trackName);
     }
   }
-  return (<button onClick={toggleButton}>{props.name}</button>)
+
+  return (<button onClick={toggleIsPlaying}>{props.trackName}</button>)
+
 }
 
 export default SoundButton;
