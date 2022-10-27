@@ -26,12 +26,12 @@ const SoundCollectionButton = (props) => {
 
   if (isShowingSoundButtons === false) {
     return (
-      <button onClick={toggleIsShowingSoundButtons}>{props.name}</button>
+      <button class='sound-collection' onClick={toggleIsShowingSoundButtons}>{props.name}</button>
     )
   } else {
     return (
       <div>
-        <button onClick={toggleIsShowingSoundButtons}>hide {props.name}</button>
+        <button class='sound-collection' onClick={toggleIsShowingSoundButtons}>hide {props.name}</button>
         {soundButtons}
       </div>
     )

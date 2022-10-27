@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import './style.scss';
+import Header from './components/ui-components/Header';
 import SoundCollectionButton from './components/ui-components/SoundCollectionButton';
 import SoundPlayer from './components/sound-components/SoundPlayer';
 
@@ -47,12 +48,12 @@ function App() {
 
   return (
     <div className="App">
+      <Header/>
       <SoundPlayer currentTrack={currentAtmosphericSound} setTrack={setCurrentAtmosphericSound}/>
       <SoundPlayer currentTrack={currentDrumSound} setTrack={setCurrentDrumSound}/>
+      <p>sound collections</p>
       <SoundCollectionButton tracksArray={atmosphericSounds} name='atmospheric sounds' setTrack={setCurrentAtmosphericSound}/>
       <SoundCollectionButton tracksArray={drumSounds} name='drum sounds' setTrack={setCurrentDrumSound}/>
-      <button onClick={() => {console.log(currentAtmosphericSound)}}>debug</button>
-      <h1>hello</h1>
     </div>
   );
 }

@@ -15,7 +15,7 @@ const SoundButton = (props) => {
     }
   }
 
-  return (<button onClick={toggleIsPlaying}>{props.trackName}</button>)
+  return (<button class='sound-button' onClick={toggleIsPlaying}>{props.trackName}</button>)
 
 }
 
