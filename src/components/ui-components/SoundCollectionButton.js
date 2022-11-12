@@ -18,10 +18,11 @@ const SoundCollectionButton = (props) => {
     for (let i = 0; i < props.tracksArray.length; i++) {
       setSoundButtons(current => [
         ...current,
-        <SoundButton setTrack={props.setTrack} trackName={props.tracksArray[i]}/>
+        <SoundButton key={props.tracksArray[i]} setTrack={props.setTrack} trackName={props.tracksArray[i]}/>
       ])
     }
     console.log(soundButtons)
+    // eslint-disable-next-line
   }, []);
 
   if (isShowingSoundButtons === false) {
