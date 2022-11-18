@@ -16,20 +16,39 @@ button {
   font-family: 'Courier New';
   font-size: 1rem;
   color: $snow;
-  border-radius: 5rem;
+  border-radius: 0rem;
   border: none;
-  margin: 1px;
-  padding: 5px;
+  margin-top: 1px;
+  margin-right: 0px;
+  margin-left: 0px;
   background-color: black;
+  height: 30px;
+  width: 60px;
 }
 
 .sound-collection {
   background-color: $burgundy;
+  margin-right: 1px;
   font-weight: 600;
+  width: 200px;
+  height: 80px;
 }
 
 .sound-button {
+  padding: 2px;
+  margin: 0px;
+  margin-right: 2px;
   background-color: $rusty_red;
+  font-weight: 200;
+  width: 100px;
+  height: 80px;
+}
+
+.guide-button {
+  width: auto;
+  padding-top: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
   font-weight: 200;
 }
 
@@ -38,11 +57,26 @@ h1 {
   font-weight: 600;
 }
 
+p {
+  font-family: 'Courier New';
+  font-weight: 100;
+}
+
 .page-header {
-  background-color: $oxford_blue;
+  background-color: black;
+  width: fit-content;
+  color: white;
+  padding: 10px;
 }
 
 input {
-  border-radius: 5rem;
-  width: 12vw;
+  border-radius: 0rem;
+  border-color: #000022;
+  margin-top: 1px;
+  margin-right: 0px;
+  width: 39px;
+  height: 30px;
+  :focus{
+    border-color: $burgundy;
+  }
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import RecordButton from "./RecordButton";
 import SoundButton from "./SoundButton";
 
 
@@ -15,27 +16,53 @@ const SoundCollectionButton = (props) => {
   // initialize the sound buttons for this set of sounds
   useEffect(() => {
     setSoundButtons([]);
-    for (let i = 0; i < props.tracksArray.length; i++) {
-      setSoundButtons(current => [
-        ...current,
-        <SoundButton key={props.tracksArray[i]} setTrack={props.setTrack} trackName={props.tracksArray[i]}/>
-      ])
+    if (props.type === 'sounds') {      
+      for (let i = 0; i < props.tracksArray.length; i++) {
+        setSoundButtons(current => [
+          ...current,
+          <SoundButton key={props.tracksArray[i]} setTrack={props.setTrack} trackName={props.tracksArray[i]}/>
+        ])
+      }
+      console.log(soundButtons)
+    } else if (props.type === 'recordings') {
+      for (let i = 0; i < 3; i ++) {
+        setSoundButtons(current => [
+          ...current,
+          <RecordButton/>
+        ])
+      }
     }
-    console.log(soundButtons)
     // eslint-disable-next-line
   }, []);
 
   if (isShowingSoundButtons === false) {
     return (
-      <button class='sound-collection' onClick={toggleIsShowingSoundButtons}>{props.name}</button>
-    )
+      <div className='mx-0'>
+        <button class='sound-collection' onClick={toggleIsShowingSoundButtons}>{props.name}</button>
+      </div>
+    );
+  } else if (props.type === 'recordings') {
+    return (
+      <div className='mx-3'>
+        <div className='row' style={{marginLeft: '-16px'}}> 
+          <button class='sound-collection' onClick={toggleIsShowingSoundButtons}>hide and clear {props.name}</button>
+        </div>
+        <div className='row' style={{marginLeft: '-16px'}}>
+          {soundButtons}
+        </div>
+      </div>
+    );
   } else {
     return (
-      <div>
-        <button class='sound-collection' onClick={toggleIsShowingSoundButtons}>hide {props.name}</button>
-        {soundButtons}
+      <div className='mx-3'>
+        <div className='row' style={{marginLeft: '-16px'}}> 
+          <button class='sound-collection' onClick={toggleIsShowingSoundButtons}>hide {props.name}</button>
+        </div>
+        <div className='row' style={{marginLeft: '-16px'}}>
+          {soundButtons}
+        </div>
       </div>
-    )
+    );
   }
 }
 

@@ -1,27 +1,23 @@
 import React, { useState, useContext } from "react";
-
-
 import { KeyboardMappingsContext } from "../../App";
 
 const SoundButton = (props) => {
-  const [isPlaying, setIsPlaying] = useState(false);
   const [mapKey, setMapKey] = useState('');
   const {keyboardMappings, setKeyboardMappings} = useContext(KeyboardMappingsContext);
   const [buttonText, setButtonText] = useState('apply')
 
-  const toggleIsPlaying = () => {
-    isPlaying === false ? setIsPlaying(true) : setIsPlaying(false);
-    
-    if (isPlaying === false) {
-      props.setTrack('');
-    } else if (isPlaying === true) {
-      props.setTrack(props.trackName);
-    }
+
+  const playSound = () => {
+    props.setTrack(props.trackName);
+  }
+
+  const clearSound = () => {
+    props.setTrack('');
   }
 
   const updateMapKey = (e) =>{
     if (e.target.value.length < 2) {
-      setMapKey(e.target.value)
+      setMapKey(e.target.value);
     }
   }
 
@@ -29,26 +25,33 @@ const SoundButton = (props) => {
     for (let count = 0; count < keyboardMappings.length; count++) {
       try {
         if (keyboardMappings[count].track === props.trackName || keyboardMappings[count].mapKey === mapKey) {
-          keyboardMappings.splice(count,1)
-          // delete keyboardMappings[count]
+          keyboardMappings.splice(count,1);
         }
       } catch (e) {
-        console.log(e)
+        console.log(e);
       }
     }
 
-    setKeyboardMappings(current => [
-      ...current, {track: props.trackName, mapKey: mapKey}
-    ])
-
-    setButtonText('applied!')
+    if (mapKey === '') {
+      setButtonText('error');
+    } else {
+      setKeyboardMappings(current => [
+        ...current, {track: props.trackName, mapKey: mapKey}
+      ]);
+      setButtonText('done!');
+    }
+    setTimeout(() => {setButtonText('apply')}, 1000);
   }
 
   return (
-    <div>
-      <button class='sound-button' onClick={toggleIsPlaying}>{props.trackName}</button>
-      <input type='text' value={mapKey} placeholder='map' onChange={updateMapKey}></input>
-      <button onClick={addKeyboardMappings}>{buttonText}</button>
+    <div className="my-1 mx-0">
+      <div className="row m-0">
+        <button class='sound-button' onMouseDown={playSound} onMouseUp={clearSound}>{props.trackName}</button>
+      </div>
+      <div className="row m-0">
+        <input type='text' value={mapKey} placeholder='map' onChange={updateMapKey}></input>
+        <button onClick={addKeyboardMappings}>{buttonText}</button>
+      </div>
     </div>)
 
 }
