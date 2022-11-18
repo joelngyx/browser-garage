@@ -63,10 +63,7 @@ p {
 }
 
 .page-header {
-  background-color: black;
   width: fit-content;
-  color: white;
-  padding: 10px;
 }
 
 input {
@@ -79,4 +76,9 @@ input {
   :focus{
     border-color: $burgundy;
   }
+}
+
+img {
+  height: 80px;
+  width: 160px;
 }

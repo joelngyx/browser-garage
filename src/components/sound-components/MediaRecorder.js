@@ -13,8 +13,7 @@ const MediaRecorder = (props) => {
       blobPropertyBag: {type: 'audio/webm'}});
 
   useEffect(() => {
-    // eslint-disable-next-line default-case
-    console.log(props.recordingState)
+    // eslint-disable-next-line 
     switch (props.recordingState) {
       case 'default':
         break;
@@ -31,6 +30,7 @@ const MediaRecorder = (props) => {
   useEffect(() => {
     console.log(audioBlob)
     props.setRecordings(audioBlob);
+    // eslint-disable-next-line 
   }, [audioBlob]);
 
 
