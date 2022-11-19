@@ -16,16 +16,16 @@ function App() {
   const drumSounds = ['drums1', 'drums2', 'drums3', 'drums4', 'drums5',
                       'drums6', 'drums7', 'drums8', 'drums9', 'drums10'];
 
-  const tracks = ['./assets/atmospheric-sounds/PG_HogChain-A.wav', './assets/atmospheric-sounds/PG_HogChain-C.wav',
-                  './assets/atmospheric-sounds/PG_HogChain-C2.wav', './assets/atmospheric-sounds/PG_HogChain-D.wav',
-                  './assets/atmospheric-sounds/PG_HogChain-G.wav', './assets/atmospheric-sounds/PG_ManyMods-A.wav',
-                  './assets/atmospheric-sounds/PG_ManyMods-C.wav', './assets/atmospheric-sounds/PG_ManyMods-D.wav',
-                  './assets/atmospheric-sounds/PG_ManyMods-G.wav', './assets/atmospheric-sounds/PG_ManyMods-G2.wav',
-                  './assets/drum-sounds/trap-cymbal-02.wav', './assets/drum-sounds/trap-cymbal-07.wav',
-                  './assets/drum-sounds/trap-hihat-06.wav', './assets/drum-sounds/trap-hihat-08.wav',
-                  './assets/drum-sounds/trap-hihat-12.wav', './assets/drum-sounds/trap-kicks-07.wav',
-                  './assets/drum-sounds/trap-kicks-09.wav', './assets/drum-sounds/trap-kicks-17.wav',
-                  './assets/drum-sounds/trap-snare-02.wav', './assets/drum-sounds/trap-snare-14.wav'];
+  const tracks = ['assets/atmospheric-sounds/PG_HogChain-A.wav', 'assets/atmospheric-sounds/PG_HogChain-C.wav',
+                  'assets/atmospheric-sounds/PG_HogChain-C2.wav', 'assets/atmospheric-sounds/PG_HogChain-D.wav',
+                  'assets/atmospheric-sounds/PG_HogChain-G.wav', 'assets/atmospheric-sounds/PG_ManyMods-A.wav',
+                  'assets/atmospheric-sounds/PG_ManyMods-C.wav', 'assets/atmospheric-sounds/PG_ManyMods-D.wav',
+                  'assets/atmospheric-sounds/PG_ManyMods-G.wav', 'assets/atmospheric-sounds/PG_ManyMods-G2.wav',
+                  'assets/drum-sounds/trap-cymbal-02.wav', 'assets/drum-sounds/trap-cymbal-07.wav',
+                  'assets/drum-sounds/trap-hihat-06.wav', 'assets/drum-sounds/trap-hihat-08.wav',
+                  'assets/drum-sounds/trap-hihat-12.wav', 'assets/drum-sounds/trap-kicks-07.wav',
+                  'assets/drum-sounds/trap-kicks-09.wav', 'assets/drum-sounds/trap-kicks-17.wav',
+                  'assets/drum-sounds/trap-snare-02.wav', 'assets/drum-sounds/trap-snare-14.wav'];
 
   // preload tracks
   useEffect(() => {
