@@ -33,6 +33,7 @@ function App() {
       // eslint-disable-next-line
       let audio = new Audio(tracks[i]);
     }
+    console.log('tracks completed preloading');
     // eslint-disable-next-line
   }, []);
 
