@@ -4,7 +4,7 @@ import './style.scss';
 import Header from './components/ui-components/Header';
 import SoundCollectionButton from './components/ui-components/SoundCollectionButton';
 import SoundPlayer from './components/sound-components/SoundPlayer';
-import PreloadAudio from './components/sound-components/PreloadAudio';
+// import PreloadAudio from './components/sound-components/PreloadAudio';
 // import ResetMappingsButton from './components/ui-components/ResetMappingsButton';
 
 
