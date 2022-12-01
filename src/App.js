@@ -4,6 +4,7 @@ import './style.scss';
 import Header from './components/ui-components/Header';
 import SoundCollectionButton from './components/ui-components/SoundCollectionButton';
 import SoundPlayer from './components/sound-components/SoundPlayer';
+import PreloadAudio from './components/sound-components/PreloadAudio';
 // import ResetMappingsButton from './components/ui-components/ResetMappingsButton';
 
 
@@ -15,30 +16,6 @@ function App() {
                              'atmos6', 'atmos7', 'atmos8', 'atmos9', 'atmos10'];
   const drumSounds = ['drums1', 'drums2', 'drums3', 'drums4', 'drums5',
                       'drums6', 'drums7', 'drums8', 'drums9', 'drums10'];
-
-  // const tracks = ['../src/assets/atmospheric-sounds/PG_HogChain-A.wav', '../src/assets/atmospheric-sounds/PG_HogChain-C.wav',
-  //                 '../src/assets/atmospheric-sounds/PG_HogChain-C2.wav', '../src/assets/atmospheric-sounds/PG_HogChain-D.wav',
-  //                 '../src/assets/atmospheric-sounds/PG_HogChain-G.wav', '../src/assets/atmospheric-sounds/PG_ManyMods-A.wav',
-  //                 '../src/assets/atmospheric-sounds/PG_ManyMods-C.wav', '../src/assets/atmospheric-sounds/PG_ManyMods-D.wav',
-  //                 '../src/assets/atmospheric-sounds/PG_ManyMods-G.wav', '../src/assets/atmospheric-sounds/PG_ManyMods-G2.wav',
-  //                 '../src/assets/drum-sounds/trap-cymbal-02.wav', '../src/assets/drum-sounds/trap-cymbal-07.wav',
-  //                 '../src/assets/drum-sounds/trap-hihat-06.wav', '../src/assets/drum-sounds/trap-hihat-08.wav',
-  //                 '../src/assets/drum-sounds/trap-hihat-12.wav', '../src/assets/drum-sounds/trap-kicks-07.wav',
-  //                 '../src/assets/drum-sounds/trap-kicks-09.wav', '../src/assets/drum-sounds/trap-kicks-17.wav',
-  //                 '../src/assets/drum-sounds/trap-snare-02.wav', '../src/assets/drum-sounds/trap-snare-14.wav'];
-
-  // preload tracks
-  // useEffect(() => {
-  //   for (let i = 0; i < tracks.length; i++) {
-  //     try {
-  //       // eslint-disable-next-line
-  //       let audio = new Audio(tracks[i]);
-  //     } catch (e) {
-  //       console.log('error preloading tracks');
-  //     }
-  //   }
-    // eslint-disable-next-line
-  // }, []);
 
   // each sound collection's current track
   const [currentAtmosphericSound1, setCurrentAtmosphericSound1] = useState('');
@@ -130,6 +107,7 @@ function App() {
   return (
     <div className="App p-5">
       <Header/>
+      <PreloadAudio/>
       <SoundPlayer currentTrack={currentAtmosphericSound1} 
         setTrack={setCurrentAtmosphericSound1} 
         setRef={setCurrentAtmosphericSound1Ref}/>
