@@ -107,7 +107,7 @@ function App() {
   return (
     <div className="App p-5">
       <Header/>
-      <PreloadAudio/>
+      {/* <PreloadAudio/> */}
       <SoundPlayer currentTrack={currentAtmosphericSound1} 
         setTrack={setCurrentAtmosphericSound1} 
         setRef={setCurrentAtmosphericSound1Ref}/>
