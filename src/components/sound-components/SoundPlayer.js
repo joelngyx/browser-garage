@@ -44,6 +44,7 @@ const SoundPlayer = (props) => {
       try {
         // eslint-disable-next-line
         let audio = new Audio(tracks[i]);
+        console.log(`preloading track ${i}`);
       } catch (e) {
         console.log('error preloading tracks');
       }
