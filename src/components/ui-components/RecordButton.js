@@ -8,6 +8,7 @@ const RecordButton = () => {
   const [recordingState, setRecordingState] = useState('default'); 
   const [playState, setPlayState] = useState(false);
   const [buttonText, setButtonText] = useState('Record');
+  const [downloadText, setDownloadText] = useState('download');
   const [recordings, setRecordings] = useState('');
   
   const toggleState = () => {
@@ -31,9 +32,15 @@ const RecordButton = () => {
   }
 
   const download = () => {
-    console.log(recordings);
     // const file = new Blob([recordings], { 'type' : 'audio/wav; codecs=0' });
-    FileSaver.saveAs(recordings, 'track.webm');
+    if (recordings !== '') {
+      FileSaver.saveAs(recordings, 'track.webm');
+    } else {
+      setDownloadText('error');
+      setTimeout(() => {
+        setDownloadText('download');
+      }, 1000)
+    }
   }
 
   return (
@@ -42,7 +49,7 @@ const RecordButton = () => {
         <button class='sound-button' onClick={toggleState}>{buttonText}</button>
       </div>
       <div className="row m-0">
-        <button class='download-button' onClick={download}>download</button>
+        <button class='download-button' onClick={download}>{downloadText}</button>
       </div>
       <RecordHowlerGlobal recordingState={recordingState} setRecordings={setRecordings}/>
       <SoundPlayer currentTrack={'recording'} isPlaying={playState} blob={recordings}/>
