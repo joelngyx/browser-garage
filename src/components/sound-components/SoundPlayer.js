@@ -34,6 +34,23 @@ const SoundPlayer = (props) => {
     props.setRef('');
   }
 
+  const tracks = [Atmospheric1, Atmospheric2, Atmospheric3, Atmospheric4,
+                  Atmospheric5, Atmospheric6, Atmospheric7, Atmospheric8,
+                  Atmospheric9, Atmospheric10, Drums1, Drums2, Drums3,
+                  Drums4, Drums5, Drums6, Drums7, Drums8, Drums9, Drums10];
+  // preload tracks
+  useEffect(() => {
+    for (let i = 0; i < tracks.length; i++) {
+      try {
+        // eslint-disable-next-line
+        let audio = new Audio(tracks[i]);
+      } catch (e) {
+        console.log('error preloading tracks');
+      }
+    }
+    // eslint-disable-next-line
+  }, []);
+
   useEffect(() => {
     if (props.currentTrack === '') {
       setIsPlaying(false);
