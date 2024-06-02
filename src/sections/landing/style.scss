@@ -1,0 +1,40 @@
+@import "../../shared/style.scss";
+
+
+.landing-section {
+  padding-top: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .logo-img {
+    width: 300px;
+    margin: 25px;
+  }
+
+  h1 {
+    width: 350px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  p {
+    border-bottom: dashed $snow;
+    border-top: dashed $snow;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 350px;
+    text-align: center;
+  }
+
+  .loading-text {
+    margin-top: 50px;
+    border: none;
+  }
+
+  button {
+    margin-top: 5vh;
+    height: 50px;
+    width: 100px;
+  }
+}

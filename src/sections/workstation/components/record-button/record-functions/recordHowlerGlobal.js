@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {Howler} from 'howler';
-import MediaRecorder from './MediaRecorder';
+import MediaRecorder from './mediaRecorder';
 
 /**
  * Uses Howler JS and Web Audio API:
@@ -35,7 +35,6 @@ const RecordHowlerGlobal = (props) => {
    */
   useEffect(() => {
     if (props.recordingState === 'setup') {
-      console.log('started hello')
       setTimeout(setupDest, 10);
       setTimeout(incrementAttempt, 11);
     }

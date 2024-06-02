@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import RecordHowlerGlobal from "../sound-components/RecordHowlerGlobal";
-import SoundPlayer from "../sound-components/SoundPlayer";
+import React, { useEffect, useState } from "react";
+import RecordHowlerGlobal from "./record-functions/recordHowlerGlobal";
 import FileSaver from 'file-saver';
 
 
-const RecordButton = () => {
+const RecordButton = (props) => {
   const [recordingState, setRecordingState] = useState('default'); 
   const [playState, setPlayState] = useState(false);
   const [buttonText, setButtonText] = useState('Record');
@@ -13,18 +12,18 @@ const RecordButton = () => {
   
   const toggleState = () => {
     if (recordingState === 'default') {
-      setRecordings('drums1');
+      // setRecordings('drums1');
       setButtonText('ready in a second!');
       setRecordingState('setup');
       setTimeout(() => {
         setRecordings('');
         setButtonText('recording');
         setRecordingState('start');
-      }, 1000)
+      }, 1000);
     } else if (recordingState === 'start') {
       setRecordingState('stop');
-      setButtonText('play')
-      console.log(recordings);
+      setButtonText('play');
+      addRecordingToList(recordings);
     } else if (recordingState === 'stop') {
         playState === true ? setPlayState(false) : setPlayState(true);
         buttonText === 'play' ? setButtonText('stop') : setButtonText('play');
@@ -43,6 +42,20 @@ const RecordButton = () => {
     }
   }
 
+  const addRecordingToList = (recordings) => {
+    props.setListOfRecordings((prev) => ({
+      ...prev,
+      sounds: [...prev.sounds, recordings] 
+    }));
+    console.log(`Add recording`);
+  };
+
+  useEffect(() => {
+    console.log(recordings);
+    // addRecordingToList(recordings);
+    // console.log(props.listOfRecordings);
+  }, [recordings]);
+
   return (
     <div className="my-1">
       <div className="row m-0">
@@ -52,7 +65,6 @@ const RecordButton = () => {
         <button class='download-button' onClick={download}>{downloadText}</button>
       </div>
       <RecordHowlerGlobal recordingState={recordingState} setRecordings={setRecordings}/>
-      <SoundPlayer currentTrack={'recording'} isPlaying={playState} blob={recordings}/>
     </div>
   )
 }

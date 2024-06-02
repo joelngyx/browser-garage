@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+$burgundy: #981F37;
+$rusty_red: #DC2E3F;
+$oxford_blue: #000022;
+$snow: #FBF5F3; 
+
+$mikado_yellow: #FFC31F;
+$folly_pink: #FF4365;
+$between_mikado_folly: #FF6E44;
+$almost_black: #030301;
+$majorelle_blue: #030301;
+$ivory: #FFFFF3;
+
+* {
+  font-family: 'Source Code Pro', monospace;
+}
+
+html, body {
+  background-color: $almost_black;
+}
+
+h1 {
+  color: $folly_pink
+}
+
+p {
+  color: $snow;
+}
+
+button {
+  background-color: $folly_pink;
+  border: none;
+  font-size: 18px;
+
+  &:hover {
+    background-color: $mikado_yellow;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

@@ -1,0 +1,38 @@
+@import "../../../../shared/style.scss";
+
+.sound-button-div {
+  width: 150px;
+  height: 150px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+
+  .instrument-sound-button {
+    width: 150px;
+    height: 100px;
+  }
+
+  .workstation-sound-button {
+    width: 150px;
+    height: 120px;
+  }
+
+  input {
+    width: 150px;
+    height: 20px;
+    border: none;
+    background-color: $snow;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .add-button {
+    width: 150px;
+  }
+
+  .remove-button {
+    width: 150px;
+    margin-top: 10px;
+  }
+}

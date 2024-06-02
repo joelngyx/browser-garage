@@ -1,0 +1,23 @@
+.instrument-button {
+  width: fit-content;
+  height: 50px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.instrument-sounds-div {
+  width: 90vw;
+  
+  
+  .sounds-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.hide-sounds-button {
+  width: 200px;
+  height: 50px;
+  margin-bottom: 20px;
+}

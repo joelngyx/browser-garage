@@ -1,0 +1,56 @@
+@import "../../shared/style.scss";
+
+$standardSpacing: 20px;
+
+.workstation-section {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2.5vw;
+  padding-right: 2.5vw;
+  padding-top: 5vh;
+
+  .workstation-button {
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+  }
+
+  .instrument-title {
+    font-size: 20px;
+    text-decoration: underline;
+    margin-bottom: $standardSpacing;
+  }
+
+  .row-div {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .back-button {
+    width: 100px;
+    height: 50px;
+    margin-top: $standardSpacing;
+    margin-bottom: $standardSpacing;
+  }
+
+  .mapped-keys-table {
+    height: fit-content;
+    border: dashed $folly_pink;
+    margin-top: $standardSpacing;
+    margin-bottom: $standardSpacing;
+    padding: $standardSpacing;
+    display: flex;
+    flex-wrap: wrap;
+
+    p {
+      color: $folly_pink;
+    }
+  }
+
+  .instruments-div {
+    border: dashed $folly_pink;
+    padding: $standardSpacing;
+    padding-bottom: 0px;
+    width: 95vw;
+  }
+}
