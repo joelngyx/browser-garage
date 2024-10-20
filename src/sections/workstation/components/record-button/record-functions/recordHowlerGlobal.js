@@ -37,6 +37,8 @@ const RecordHowlerGlobal = (props) => {
     if (props.recordingState === 'setup') {
       setTimeout(setupDest, 10);
       setTimeout(incrementAttempt, 11);
+    } else if (props.recordingState === 'default') {
+      setDest();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [attempt, props.recordingState]);

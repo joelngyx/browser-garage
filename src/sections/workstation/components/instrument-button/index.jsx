@@ -13,11 +13,10 @@ import SoundButton from "../sound-button/";
  */
 const InstrumentButton = (props) => {
   /* STEP 1. Declare states */
-  // The showSounds state control the toggling between displaying/hiding SoundButtons
-  const [showSounds, setShowSounds] = useState(false);
+  const [showSounds, setShowSounds] = useState(false); // controls the toggling between displaying/hiding SoundButtons
 
   /* STEP 2. Declare function */
-  // This function toggles the showSounds state
+  /* === This function toggles the showSounds state === */
   const toggleShowSoundsState = () => {
     setShowSounds(!showSounds);
   }

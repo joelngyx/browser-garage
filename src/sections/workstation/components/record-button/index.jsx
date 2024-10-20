@@ -1,29 +1,32 @@
 import React, { useEffect, useState } from "react";
+import ReactHowler from "react-howler";
 import RecordHowlerGlobal from "./record-functions/recordHowlerGlobal";
 import FileSaver from 'file-saver';
+
+import "./style.scss";
 
 
 const RecordButton = (props) => {
   const [recordingState, setRecordingState] = useState('default'); 
   const [playState, setPlayState] = useState(false);
   const [buttonText, setButtonText] = useState('Record');
-  const [downloadText, setDownloadText] = useState('download');
-  const [recordings, setRecordings] = useState('');
-  
+  const [downloadText, setDownloadText] = useState('Download');
+  const [resetText, setResetText] = useState('Reset');
+  const [recording, setRecording] = useState('');
+
+  /* === === */
   const toggleState = () => {
-    if (recordingState === 'default') {
-      // setRecordings('drums1');
-      setButtonText('ready in a second!');
+    if (recordingState === 'default') { // transition from default to start
+      setButtonText('wait...');
       setRecordingState('setup');
       setTimeout(() => {
-        setRecordings('');
+        setRecording('');
         setButtonText('recording');
         setRecordingState('start');
       }, 1000);
-    } else if (recordingState === 'start') {
+    } else if (recordingState === 'start') { // transition from start to stop
       setRecordingState('stop');
       setButtonText('play');
-      addRecordingToList(recordings);
     } else if (recordingState === 'stop') {
         playState === true ? setPlayState(false) : setPlayState(true);
         buttonText === 'play' ? setButtonText('stop') : setButtonText('play');
@@ -31,40 +34,45 @@ const RecordButton = (props) => {
   }
 
   const download = () => {
-    // const file = new Blob([recordings], { 'type' : 'audio/wav; codecs=0' });
-    if (recordings !== '') {
-      FileSaver.saveAs(recordings, 'track.webm');
+    if (recording !== '') {
+      FileSaver.saveAs(recording, 'track.webm');
     } else {
       setDownloadText('error');
       setTimeout(() => {
-        setDownloadText('download');
+        setDownloadText('Download');
       }, 1000)
     }
   }
 
-  const addRecordingToList = (recordings) => {
-    props.setListOfRecordings((prev) => ({
-      ...prev,
-      sounds: [...prev.sounds, recordings] 
-    }));
-    console.log(`Add recording`);
-  };
-
-  useEffect(() => {
-    console.log(recordings);
-    // addRecordingToList(recordings);
-    // console.log(props.listOfRecordings);
-  }, [recordings]);
+  const reset = () => {
+    if (recording !== '') {
+      setRecording('');
+      setRecordingState('default');
+      setButtonText('Record');
+    } else {
+      setResetText('error');
+      setTimeout(() => {
+        setResetText('Reset');
+      }, 1000)
+    }
+  }
 
   return (
-    <div className="my-1">
-      <div className="row m-0">
+    <div className="my-1 record-div">
+      <p>Recording {props.text}</p>
+      <div className="row m-1">
         <button class='sound-button' onClick={toggleState}>{buttonText}</button>
       </div>
-      <div className="row m-0">
+      <div className="row m-1">
         <button class='download-button' onClick={download}>{downloadText}</button>
       </div>
-      <RecordHowlerGlobal recordingState={recordingState} setRecordings={setRecordings}/>
+      <div className="row m-1">
+        <button class='download-button' onClick={reset}>{resetText}</button>
+      </div>
+      <RecordHowlerGlobal recordingState={recordingState} setRecordings={setRecording}/>
+      {(recording === undefined || recording === null || recording === '') // to avoid any null errors if the recording state contains no value
+        ? <></> 
+        : <ReactHowler src={recording} playing={playState} format={['mp3', 'wav']} loop={true}/> }
     </div>
   )
 }
