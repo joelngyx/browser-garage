@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React, { useEffect, useState } from "react";
 import ReactHowler from "react-howler";
 import RecordHowlerGlobal from "./record-functions/recordHowlerGlobal";
