@@ -4,34 +4,57 @@ import ReactHowler from "react-howler";
 import RecordHowlerGlobal from "./record-functions/recordHowlerGlobal";
 import FileSaver from 'file-saver';
 
+import RecordInputDevice from "./record-functions/recordInputDevice";
+
 import "./style.scss";
 
 
 const RecordButton = (props) => {
   const [recordingState, setRecordingState] = useState('default'); 
   const [playState, setPlayState] = useState(false);
-  const [buttonText, setButtonText] = useState('Record');
+  const [soundButtonText, setSoundButtonText] = useState('Record Browser');
+  const [micButtonText, setMicButtonText] = useState('Record Mic');
   const [downloadText, setDownloadText] = useState('Download');
   const [resetText, setResetText] = useState('Reset');
   const [recording, setRecording] = useState('');
+  const [isDelete, setIsDelete] = useState(false);
 
-  /* === === */
+  const [startMicRecording, setStartMicRecording] = useState('default')
+
+  /* === Toggle button state for Recording from Browser === */
   const toggleState = () => {
     if (recordingState === 'default') { // transition from default to start
-      setButtonText('wait...');
+      setSoundButtonText('wait...');
       setRecordingState('setup');
       setTimeout(() => {
         setRecording('');
-        setButtonText('recording');
+        setSoundButtonText('recording');
         setRecordingState('start');
       }, 1000);
     } else if (recordingState === 'start') { // transition from start to stop
       setRecordingState('stop');
-      setButtonText('play');
+      setSoundButtonText('play');
     } else if (recordingState === 'stop') {
         playState === true ? setPlayState(false) : setPlayState(true);
-        buttonText === 'play' ? setButtonText('stop') : setButtonText('play');
+        soundButtonText === 'play' ? setSoundButtonText('stop') : setSoundButtonText('play');
     } 
+  }
+
+  /* === Toggle button state for Recording from Mic === */
+  const toggleVoiceRecordingButtonState = () => {
+    if (micButtonText === 'Record Mic') {
+      setMicButtonText('recording')
+      setStartMicRecording('start');
+    } else if (micButtonText === 'recording') {
+      setStartMicRecording('stop');
+      setMicButtonText('play')
+    } else if (micButtonText === 'play') {
+      setPlayState(true);
+      setMicButtonText('stop');
+    } else if (micButtonText === 'stop') {
+      setPlayState(false);
+      setMicButtonText('play');
+    }
   }
 
   const download = () => {
@@ -49,7 +72,8 @@ const RecordButton = (props) => {
     if (recording !== '') {
       setRecording('');
       setRecordingState('default');
-      setButtonText('Record');
+      setSoundButtonText('Record Browser');
+      setMicButtonText('Record Mic');
     } else {
       setResetText('error');
       setTimeout(() => {
@@ -62,7 +86,10 @@ const RecordButton = (props) => {
     <div className="my-1 record-div">
       <p>Recording {props.text}</p>
       <div className="row m-1">
-        <button class='sound-button' onClick={toggleState}>{buttonText}</button>
+        <button class='sound-button' onClick={toggleState}>{soundButtonText}</button>
+      </div>
+      <div className="row m-1">
+        <button class='sound-button' onClick={toggleVoiceRecordingButtonState}>{micButtonText}</button>
       </div>
       <div className="row m-1">
         <button class='download-button' onClick={download}>{downloadText}</button>
@@ -70,6 +97,10 @@ const RecordButton = (props) => {
       <div className="row m-1">
         <button class='download-button' onClick={reset}>{resetText}</button>
       </div>
+      <div className="row m-1">
+        <button class='download-button'>Delete</button>
+      </div>
+      <RecordInputDevice recordingState={startMicRecording} setRecording={setRecording}/>
       <RecordHowlerGlobal recordingState={recordingState} setRecordings={setRecording}/>
       {(recording === undefined || recording === null || recording === '') // to avoid any null errors if the recording state contains no value
         ? <></> 

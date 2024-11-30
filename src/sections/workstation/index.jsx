@@ -6,6 +6,7 @@ import SoundButton from "./components/sound-button";
 import RecordButton from "./components/record-button";
 // eslint-disable-next-line
 import AdjustSoundEffectsBar from "./components/adjust-sound-effects-bar";
+import RecordInputAudioButton from "./components/record-input-audio-button";
 
 
 /**
@@ -19,6 +20,7 @@ const WorkStation = (props) => {
   ========================================== */
   const [keyMappings, setKeyMappings] = useState([]); // keeps keyboard key-soundName-soundSource mapping 
   const [recordingComponents, setrecordingComponents] = useState([]);
+  const [rateVal, setRateVal] = useState(1); // default to regular playback speed
   const listOfInstrumentSounds = [ // this constant variable is for sounds from the shared directory
     {
       name: "Drums",
@@ -119,6 +121,14 @@ const WorkStation = (props) => {
     setrecordingComponents([...recordingComponents, {text: `${recordingComponents.length + 1}`}]); // Append a new component
   };
 
+  const increaseRateVal = () => {
+    setRateVal(Math.round((rateVal + 0.1) * 10) / 10);
+  }
+
+  const decreaseRateVal = () => {
+    setRateVal(Math.round((rateVal - 0.1) * 10) / 10);
+  }
+
 
 
   return <div className="workstation-section">
@@ -129,11 +139,14 @@ const WorkStation = (props) => {
         - the clear workstation button (clears all key mappings)
         - the record button */}
     <div className="mapped-keys-table">
-      <button onClick={handleAppendRecordings}>Add Recording</button>
+      <button className="add-recording-button" onClick={handleAppendRecordings}>Add Recording</button>
       {recordingComponents.map((component, index) => (
               <RecordButton key={index} text={component.text} />
             ))}
-      {/* <AdjustSoundEffectsBar/> */}
+      {/* <RecordInputAudioButton/> */}
+      <AdjustSoundEffectsBar rateVal={rateVal}
+        increaseRateVal={increaseRateVal}
+        decreaseRateVal={decreaseRateVal}/>
       {(keyMappings.length < 1)
         ? <p>Add sounds to the Workstation to begin jamming!</p>
         : <>
@@ -143,6 +156,7 @@ const WorkStation = (props) => {
                 soundItem={item.soundItem}
                 mappedKey={item.mappedKey}
                 removeKeyMapping={removeKeyMapping}
+                rateVal={rateVal}
                 />
             })}
             <button className="workstation-button"
@@ -151,19 +165,6 @@ const WorkStation = (props) => {
           </>
       }
     </div>
-
-    {/* The Recording section contains the JSX elements that display:
-        - recordings that have been recording
-        - these recordings can be looped, paused with keyboard key presses */}
-    {/* <h1>Recordings</h1>
-    <div className="instruments-div">
-      <RecordButton
-        listOfRecordings={listOfRecordings}
-        setListOfRecordings={setListOfRecordings}/>
-      <RecordButton
-        listOfRecordings={listOfRecordings}
-        setListOfRecordings={setListOfRecordings}/>
-    </div> */}
 
     {/* This Instruments section contains the JSX elements that display: 
       - the available sounds */}

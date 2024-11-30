@@ -373,7 +373,7 @@ const SoundButton = (props) => {
     case "workstation": // how the sound button would appear if it is under the workstation section
       return <div className="sound-button-div">
         {(playState === true && soundSource !== "" && soundSource !== undefined)
-          ?  <ReactHowler src={soundSource} playing={true} loop={true} rate={0.890899}/>
+          ?  <ReactHowler src={soundSource} playing={true} loop={true} rate={props.rateVal}/>
           : <></>}
         <button ref={soundButtonRef}
           onClick={handleButtonClick}

@@ -2,6 +2,16 @@
 
 .adjust-sound-effect-bar-div {
   width: 100%;
-  border-style: dashed;
   border-color: $folly_pink;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .adjust-rate-bar-div{
+    button {
+      margin-right: 20px;
+    }
+    p {
+      display: inline;
+    }
+  }
 }
