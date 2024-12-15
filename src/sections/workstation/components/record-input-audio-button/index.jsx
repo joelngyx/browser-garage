@@ -1,8 +1,9 @@
+// eslint-disable-next-line
 import React, { useEffect, useState } from 'react';
 import RecordInputDevice from '../record-button/record-functions/recordInputDevice';
 import ReactHowler from 'react-howler';
 
-
+// eslint-disable-next-line
 const RecordInputAudioButton = (props) => {
   const [startMicRecording, setStartMicRecording] = useState('default'); // states are 'default', 'start', 'stop'
   const [recording, setRecording] = useState('');

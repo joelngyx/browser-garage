@@ -6,6 +6,7 @@ import MediaRecorder from './mediaRecorder';
  */
 const RecordInputDevice = (props) => {
   const [stream, setStream] = useState();
+  // eslint-disable-next-line
   const [recording, setRecording] = useState();
   
 

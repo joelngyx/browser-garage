@@ -17,6 +17,7 @@ const RecordButton = (props) => {
   const [downloadText, setDownloadText] = useState('Download');
   const [resetText, setResetText] = useState('Reset');
   const [recording, setRecording] = useState('');
+  // eslint-disable-next-line
   const [isDelete, setIsDelete] = useState(false);
 
   const [startMicRecording, setStartMicRecording] = useState('default')
